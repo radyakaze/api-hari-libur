@@ -33,9 +33,24 @@ export const crawler = async (year: string) => {
     return (Array.from(
       item.querySelectorAll('li:last-child table tr'),
     ) as HTMLDocument[])
-      .map((holiday) => {
+      .flatMap((holiday) => {
         const day = holiday.querySelector('td:first-child')?.textContent.trim()
         const name = holiday.querySelector('td:last-child')?.textContent.trim()
+
+        if (day && day.includes('-')) {
+          const split = day.split('-', 2)
+          const start = Number(split[0])
+          const end = Number(split[1])
+
+          return Array.from({ length: end - start })
+            .fill(start)
+            .flatMap((value, index) => {
+              return {
+                date: `${year}-${month}-${Number(value) + index}`,
+                name,
+              }
+            })
+        }
 
         return {
           date: `${year}-${month}-${day}`,
