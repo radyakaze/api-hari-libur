@@ -1,4 +1,4 @@
-import { crawler } from '@/libraries/crawler.ts'
+import { crawler } from '@/libraries/scraper.ts'
 
 export const getHoliday = async (kv: Deno.Kv, year: string, month?: string) => {
   const holiday = await getHolidayYearly(kv, year)
@@ -13,10 +13,12 @@ export const getHoliday = async (kv: Deno.Kv, year: string, month?: string) => {
 }
 
 export const getHolidayToday = async (kv: Deno.Kv) => {
-  const current = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }))
+  const current = new Date(
+    new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }),
+  )
 
   const year = current.getFullYear().toString()
-  const month = current.getMonth().toString().padStart(2, '0')
+  const month = (current.getMonth() + 1).toString().padStart(2, '0')
   const day = current.getDate().toString().padStart(2, '0')
   const date = `${year}-${month}-${day}`
 
@@ -26,7 +28,7 @@ export const getHolidayToday = async (kv: Deno.Kv) => {
     date,
     holiday_list: holiday
       .filter((item) => item.date === date)
-      .map(item => item.name)
+      .map((item) => item.name),
   }
 }
 
