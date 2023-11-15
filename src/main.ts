@@ -1,7 +1,7 @@
 import { type Context, Hono } from 'hono'
 import { compress, serveStatic, cors, logger } from 'hono/middleware'
 import { validator } from 'hono/validator'
-import { getHoliday } from '@/libraries/holiday.ts'
+import { getHoliday, getHolidayToday } from '@/libraries/holiday.ts'
 import { dateSchema } from '@/schema/date_schema.ts'
 
 const kv = await Deno.openKv()
@@ -32,6 +32,21 @@ app.get(
     try {
       return c.json(
         await getHoliday(kv, year, month),
+      )
+    } catch (error) {
+      return c.json({
+        message: error.message.toString(),
+      }, 500)
+    }
+  },
+)
+
+app.get(
+  '/api/today',
+  async (c: Context) => {
+    try {
+      return c.json(
+        await getHolidayToday(kv),
       )
     } catch (error) {
       return c.json({
