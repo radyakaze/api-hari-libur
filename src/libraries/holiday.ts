@@ -24,11 +24,14 @@ export const getHolidayToday = async (kv: Deno.Kv) => {
 
   const holiday = await getHolidayYearly(kv, year)
 
+  const holidayList = holiday
+    .filter((item) => item.date === date)
+    .map((item) => item.name)
+
   return {
     date,
-    holiday_list: holiday
-      .filter((item) => item.date === date)
-      .map((item) => item.name),
+    is_holiday: holidayList.length > 0,
+    holiday_list: holidayList,
   }
 }
 
