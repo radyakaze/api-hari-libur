@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "dev": "deno run --unstable --allow-net --allow-read --watch src/main.ts"
+  },
+  "imports": {
+    "deno-dom": "https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts",
+    "hono": "https://deno.land/x/hono@v3.10.0/mod.ts",
+    "hono/middleware": "https://deno.land/x/hono@v3.10.0/middleware.ts",
+    "hono/validator": "https://deno.land/x/hono@v3.10.0/validator/index.ts",
+    "zod": "https://deno.land/x/zod@v3.22.4/mod.ts"
+  },
+  "fmt": {
+    "indentWidth": 2,
+    "singleQuote": true,
+    "semiColons": false
+  }
+}

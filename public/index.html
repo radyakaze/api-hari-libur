@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Hari Libur</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div
+      class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12"
+    >
+      <div
+        class="absolute inset-0 bg-[url(/images/bg.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+      ></div>
+      <div
+        class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10"
+      >
+        <div class="mx-auto max-w-md">
+          <h1 class="text-3xl text-gray-900 text-center">API Hari Libur</h1>
+          <h2 class="text-gray-500 text-center">
+            Karena rakyat suka
+            <strong class="text-red-600">tanggal merah</strong>
+          </h2>
+          <div class="divide-y divide-gray-300/50">
+            <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
+              <p>Cara mengakses API:</p>
+              <ul class="space-y-4">
+                <li class="flex items-center">
+                  <svg
+                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="11" />
+                    <path
+                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
+                      fill="none"
+                    />
+                  </svg>
+                  <p class="ml-4">
+                    <a href="/api" class="api-link">/api</a>
+                    Untuk mendapatkan hari libur pada tahun ini
+                  </p>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="11" />
+                    <path
+                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
+                      fill="none"
+                    />
+                  </svg>
+                  <p class="ml-4">
+                    <a href="/api?year=2023" class="api-link">/api?year=2023</a>
+                    Untuk mendapatkan hari libur pada pada tahun 2023
+                  </p>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="11" />
+                    <path
+                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
+                      fill="none"
+                    />
+                  </svg>
+                  <p class="ml-4">
+                    <a href="/api?month=8" class="api-link">/api?month=8</a>
+                    Untuk mendapatkan hari libur pada pada bulan ke-8 tahun
+                    sekarang
+                  </p>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="11" />
+                    <path
+                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
+                      fill="none"
+                    />
+                  </svg>
+                  <p class="ml-4">
+                    <a href="/api?year=2023&month=8" class="api-link"
+                      >/api?year=2023&month=8</a
+                    >
+                    Untuk mendapatkan hari libur pada pada bulan ke-8 tahun 2023
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Data API diambil dari
+                <a
+                  href="https://www.tanggalan.com/"
+                  target="_blank"
+                  class="api-link"
+                  >tanggalan.com</a
+                >.
+              </p>
+            </div>
+            <div class="pt-8 text-base font-semibold leading-7">
+              <p class="text-gray-900">Source Code</p>
+              <p>
+                <a
+                  href="https://github.com/radyakaze/api-hari-libur"
+                  class="api-link"
+                  >Github &rarr;</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
