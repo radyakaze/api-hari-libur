@@ -1,5 +1,5 @@
 import { type Context, Hono } from 'hono'
-import { cache, compress, serveStatic } from 'hono/middleware'
+import { compress, serveStatic } from 'hono/middleware'
 import { validator } from 'hono/validator'
 import { getHoliday } from './library/holiday.ts'
 import { dateSchema } from './schema/date_schema.ts'
@@ -9,15 +9,6 @@ const kv = await Deno.openKv()
 const app = new Hono()
 
 app.use('*', compress())
-
-app.get(
-  '/api/*',
-  cache({
-    cacheName: 'my-app',
-    cacheControl: 'max-age=86400',
-    wait: true,
-  }),
-)
 
 app.get('*', serveStatic({ root: './public' }))
 
