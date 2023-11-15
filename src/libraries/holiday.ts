@@ -13,7 +13,8 @@ export const getHoliday = async (kv: Deno.Kv, year: string, month?: string) => {
 }
 
 export const getHolidayToday = async (kv: Deno.Kv) => {
-  const current = new Date()
+  const current = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }))
+
   const year = current.getFullYear().toString()
   const month = current.getMonth().toString().padStart(2, '0')
   const day = current.getDate().toString().padStart(2, '0')
