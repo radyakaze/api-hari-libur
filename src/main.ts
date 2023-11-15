@@ -9,6 +9,10 @@ const kv = await Deno.openKv()
 const app = new Hono()
 
 app.use('*', compress())
+app.use('/api/*', cors({
+  origin: '*',
+  allowMethods: ['GET']
+}))
 
 app.get('*', serveStatic({ root: './public' }))
 
