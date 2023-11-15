@@ -1,5 +1,5 @@
 import { type Context, Hono } from 'hono'
-import { compress, serveStatic, cors } from 'hono/middleware'
+import { compress, serveStatic, cors, logger } from 'hono/middleware'
 import { validator } from 'hono/validator'
 import { getHoliday } from '@/libraries/holiday.ts'
 import { dateSchema } from '@/schema/date_schema.ts'
@@ -9,12 +9,11 @@ const kv = await Deno.openKv()
 const app = new Hono()
 
 app.use('*', compress())
+app.use('*', logger())
 app.use('/api/*', cors({
   origin: '*',
   allowMethods: ['GET']
 }))
-
-app.get('*', serveStatic({ root: './public' }))
 
 app.get(
   '/api',
@@ -41,5 +40,7 @@ app.get(
     }
   },
 )
+
+app.get('*', serveStatic({ root: './public' }))
 
 Deno.serve(app.fetch)
