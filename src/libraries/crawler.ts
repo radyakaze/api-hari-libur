@@ -1,8 +1,7 @@
 import { DOMParser, HTMLDocument } from 'deno-dom'
-import { MONTH_NAME } from '../constants/month.ts'
+import { MONTH_NAME } from '@/constants/month.ts'
 
 const fetcher = async (year: string) => {
-  console.log('panggil dari crawler', year)
   const response = await fetch(`https://www.tanggalan.com/${year}`)
 
   if (!response.ok) {

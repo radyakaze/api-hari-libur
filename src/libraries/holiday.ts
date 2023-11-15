@@ -1,4 +1,4 @@
-import { crawler } from './crawler.ts'
+import { crawler } from '@/libraries/crawler.ts'
 
 export const getHoliday = async (kv: Deno.Kv, year: string, month?: string) => {
   const holiday = await getHolidayYearly(kv, year)

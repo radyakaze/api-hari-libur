@@ -1,8 +1,8 @@
 import { type Context, Hono } from 'hono'
-import { compress, serveStatic } from 'hono/middleware'
+import { compress, serveStatic, cors } from 'hono/middleware'
 import { validator } from 'hono/validator'
-import { getHoliday } from './library/holiday.ts'
-import { dateSchema } from './schema/date_schema.ts'
+import { getHoliday } from '@/libraries/holiday.ts'
+import { dateSchema } from '@/schema/date_schema.ts'
 
 const kv = await Deno.openKv()
 
