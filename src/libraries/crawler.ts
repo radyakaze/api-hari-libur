@@ -46,14 +46,14 @@ export const crawler = async (year: string) => {
             .fill(start)
             .flatMap((value, index) => {
               return {
-                date: `${year}-${month}-${Number(value) + index}`,
+                date: `${year}-${month}-${(Number(value) + index).toString().padStart(2, '0')}`,
                 name,
               }
             })
         }
 
         return {
-          date: `${year}-${month}-${day}`,
+          date: `${year}-${month}-${day?.padStart(2, '0')}`,
           name,
         }
       })
