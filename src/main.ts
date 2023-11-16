@@ -1,6 +1,6 @@
 import { type Context, Hono } from 'hono'
 import { compress, serveStatic, cors, logger } from 'hono/middleware'
-import { validator } from 'hono/validator'
+import { zodValidator } from '@/libraries/validation.ts'
 import { getHoliday, getHolidayDate } from '@/libraries/holiday.ts'
 import { dateSchema } from '@/schema/date_schema.ts'
 
@@ -17,63 +17,44 @@ app.use('/api/*', cors({
 
 app.get(
   '/api',
-  validator('query', (value, c) => {
-    const parsed = dateSchema.safeParse(value)
-    if (!parsed.success) {
-      return c.json(parsed.error.format(), 401)
-    }
-
-    return parsed.data
-  }),
+  zodValidator('query', dateSchema),
   async (c: Context) => {
     const year = c.req.query('year') || new Date().getFullYear().toString()
     const month = c.req.query('month')
 
-    try {
-      return c.json(
-        await getHoliday(kv, year, month),
-      )
-    } catch (error) {
-      return c.json({
-        message: error.message.toString(),
-      }, 500)
-    }
+    return c.json(
+      await getHoliday(kv, year, month),
+    )
   },
 )
 
 app.get(
   '/api/today',
   async (c: Context) => {
-    try {
-      return c.json(
-        await getHolidayDate(kv, new Date()),
-      )
-    } catch (error) {
-      return c.json({
-        message: error.message.toString(),
-      }, 500)
-    }
+    return c.json(
+      await getHolidayDate(kv, new Date()),
+    )
   },
 )
 
 app.get(
   '/api/tomorrow',
   async (c: Context) => {
-    try {
-      const date = new Date()
-      date.setDate(date.getDate() + 1)
+    const date = new Date()
+    date.setDate(date.getDate() + 1)
 
-      return c.json(
-        await getHolidayDate(kv, date),
-      )
-    } catch (error) {
-      return c.json({
-        message: error.message.toString(),
-      }, 500)
-    }
+    return c.json(
+      await getHolidayDate(kv, date),
+    )
   },
 )
 
 app.get('*', serveStatic({ root: './public' }))
+
+app.onError((err: Error, c: Context) => {
+  return c.json({
+    message: err.message.toString(),
+  }, 500)
+})
 
 Deno.serve(app.fetch)
