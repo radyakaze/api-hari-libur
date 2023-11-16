@@ -22,4 +22,41 @@ export const dateSchema = z.object({
       message: 'Maximum month is 12',
     })
     .optional(),
+  day: z
+    .coerce
+    .number()
+    .min(1, {
+      message: 'Minimum day is 1',
+    })
+    .max(31, {
+      message: 'Maximum day is 31',
+    })
+    .optional(),
 })
+  .superRefine(({ year, month, day }, ctx) => {
+    if (!year) {
+      year = new Date().getFullYear()
+    }
+
+    if (day) {
+      if (!month) {
+        ctx.addIssue({
+          path: ['month'],
+          code: z.ZodIssueCode.custom,
+          message: 'Month is required when specifying day'
+        })
+
+        return z.NEVER
+      }
+
+      const parsedDate = new Date(year, month - 1, day)
+
+      if (parsedDate.getFullYear() !== year || parsedDate.getMonth() !== month - 1 || parsedDate.getDate() !== day) {
+        ctx.addIssue({
+          path: ['day'],
+          code: z.ZodIssueCode.invalid_date,
+          message: 'The provided date is not valid'
+        })
+      }
+    }
+  })

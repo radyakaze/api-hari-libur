@@ -21,6 +21,13 @@ app.get(
   async (c: Context) => {
     const year = c.req.query('year') || new Date().getFullYear().toString()
     const month = c.req.query('month')
+    const day = c.req.query('day')
+
+    if (day) {
+      return c.json(
+        await getHolidayDate(kv, new Date(`${year}-${month}-${day}`)),
+      )
+    }
 
     return c.json(
       await getHoliday(kv, year, month),
