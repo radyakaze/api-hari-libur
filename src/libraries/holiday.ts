@@ -41,13 +41,23 @@ export const getHolidayYearly = async (kv: Deno.Kv, year: string) => {
   const value = (await res).value
 
   if (!value) {
-    const data = await crawler(year)
+    const data = await getData(year)
+    const expireIn = Number(year) >= new Date().getFullYear() ? 60 * 60 * 24 * 30 : undefined
+
     await kv.set([year], data, {
-      expireIn: 60 * 60 * 24 * 30,
+      expireIn,
     })
 
     return data
   }
 
   return value
+}
+
+const getData = async (year: string) => {
+  try {
+    return await crawler(year)
+  } catch {
+    return []
+  }
 }
