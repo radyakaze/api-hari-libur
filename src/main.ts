@@ -1,5 +1,5 @@
 import { type Context, Hono } from 'hono'
-import { compress, serveStatic, cors, logger } from 'hono/middleware'
+import { serveStatic, cors, logger } from 'hono/middleware'
 import { zodValidator } from '@/libraries/validation.ts'
 import { getHoliday, getHolidayDate } from '@/libraries/holiday.ts'
 import { dateSchema } from '@/schema/date_schema.ts'
@@ -8,7 +8,6 @@ const kv = await Deno.openKv()
 
 const app = new Hono()
 
-app.use('*', compress())
 app.use('*', logger())
 app.use('/api/*', cors({
   origin: '*',
