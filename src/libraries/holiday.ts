@@ -12,24 +12,24 @@ export const getHoliday = async (kv: Deno.Kv, year: string, month?: string) => {
   })
 }
 
-export const getHolidayToday = async (kv: Deno.Kv) => {
+export const getHolidayDate = async (kv: Deno.Kv, date: Date) => {
   const current = new Date(
-    new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }),
+    date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }),
   )
 
   const year = current.getFullYear().toString()
   const month = (current.getMonth() + 1).toString().padStart(2, '0')
   const day = current.getDate().toString().padStart(2, '0')
-  const date = `${year}-${month}-${day}`
+  const formattedDate = `${year}-${month}-${day}`
 
   const holiday = await getHolidayYearly(kv, year)
 
   const holidayList = holiday
-    .filter((item) => item.date === date)
+    .filter((item) => item.date === formattedDate)
     .map((item) => item.name)
 
   return {
-    date,
+    date: formattedDate,
     is_holiday: holidayList.length > 0,
     holiday_list: holidayList,
   }
