@@ -1,193 +1,1761 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <title>API Hari Libur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="API Hari Libur Indonesia: Solusi praktis untuk pengembang. Dapatkan akses langsung ke data libur nasional dan cuti bersama, secara mudah diintegrasikan ke dalam proyek pengembangan Anda."
-    />
-    <meta property="og:title" content="API Hari Libur" />
-    <meta
-      property="og:description"
-      content="API Hari Libur Indonesia: Solusi praktis untuk pengembang. Dapatkan akses langsung ke data libur nasional dan cuti bersama, secara mudah diintegrasikan ke dalam proyek pengembangan Anda."
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div
-      class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12"
-    >
-      <div
-        class="absolute inset-0 bg-[url(/images/bg.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
-      ></div>
-      <div
-        class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10"
-      >
-        <div class="mx-auto max-w-md">
-          <h1 class="text-3xl text-gray-900 text-center">API Hari Libur</h1>
-          <h2 class="text-gray-500 text-center">
-            Karena rakyat suka
-            <strong class="text-red-600">tanggal merah</strong>
-          </h2>
-          <div class="divide-y divide-gray-300/50">
-            <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-              <p>Cara mengakses API:</p>
-              <ul class="space-y-4">
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a href="/api" class="api-link">/api</a>
-                    Untuk mendapatkan hari libur pada tahun ini.
-                  </p>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a href="/api?year=2023" class="api-link">/api?year=2023</a>
-                    Untuk mendapatkan hari libur pada pada tahun 2023.
-                  </p>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a href="/api?month=8" class="api-link">/api?month=8</a>
-                    Untuk mendapatkan hari libur pada pada bulan ke-8 tahun ini.
-                  </p>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a href="/api?year=2023&amp;month=8" class="api-link"
-                      >/api?year=2023&amp;month=8</a
-                    >
-                    Untuk mendapatkan hari libur pada pada bulan ke-8 tahun
-                    2023.
-                  </p>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a
-                      href="/api?year=2023&amp;month=1&amp;day=1"
-                      class="api-link"
-                      >/api?year=2023&amp;month=1&amp;day=1</a
-                    >
-                    Untuk mendapatkan hari libur pada pada tanggal 1 Januari
-                    2023.
-                  </p>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a href="/api/today" class="api-link">/api/today</a>
-                    Untuk mendapatkan hari libur pada hari ini.
-                  </p>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="11" />
-                    <path
-                      d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                      fill="none"
-                    />
-                  </svg>
-                  <p class="ml-4">
-                    <a href="/api/tomorrow" class="api-link">/api/tomorrow</a>
-                    Untuk mendapatkan hari libur pada besok hari.
-                  </p>
-                </li>
-              </ul>
-              <p>
-                Data hari libur bersumber dari
-                <a
-                  href="https://www.tanggalan.com/"
-                  target="_blank"
-                  class="api-link"
-                  >tanggalan.com</a
-                >.
-              </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Hari Libur Indonesia - Karena Rakyat Suka Tanggal Merah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --red-indonesia: #e74c3c;
+            --white-indonesia: #ffffff;
+            --accent-dark: #2c3e50;
+            --accent-blue: #3498db;
+            --text-primary: #2c3e50;
+            --text-secondary: #5a6c7d;
+            --text-muted: #95a5a6;
+            --border: #e1e8ed;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background with Indonesian Flag */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom,
+                var(--red-indonesia) 0%,
+                var(--red-indonesia) 40%,
+                var(--white-indonesia) 40%,
+                var(--white-indonesia) 100%);
+            opacity: 0.03;
+        }
+
+        .bg-decoration::before {
+            content: '🇮🇩';
+            position: absolute;
+            font-size: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.02;
+            animation: float 30s ease-in-out infinite;
+        }
+
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(231, 76, 60, 0.02) 50px,
+                    rgba(231, 76, 60, 0.02) 100px
+                );
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0 80px;
+            text-align: center;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--red-indonesia);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            transform: rotate(-5deg);
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50% { transform: rotate(-5deg) scale(1.05); }
+        }
+
+        h1 {
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 3.5rem;
+            color: var(--red-indonesia);
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .tagline strong {
+            color: var(--red-indonesia);
+            font-weight: 700;
+        }
+
+        .badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            border-color: var(--red-indonesia);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+            background: var(--bg-secondary);
+        }
+
+        /* Quick Try Section */
+        .quick-try {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quick-try::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--red-indonesia);
+        }
+
+        .quick-try h2 {
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .quick-try p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .try-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .try-btn {
+            padding: 14px 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .try-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .try-btn:hover::before {
+            left: 100%;
+        }
+
+        .try-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--red-indonesia);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+        }
+
+        .try-btn.active {
+            background: var(--red-indonesia);
+            color: white;
+            border-color: var(--red-indonesia);
+            box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+        }
+
+        .endpoint-display {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .endpoint-display::before {
+            content: 'GET';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: var(--accent-dark);
+            color: white;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .endpoint-url {
+            flex: 1;
+            padding-left: 60px;
+            word-break: break-all;
+            color: var(--accent-blue);
+        }
+
+        .copy-btn {
+            padding: 8px;
+            background: var(--red-indonesia);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-dark);
+            transform: scale(1.05);
+        }
+
+        .copy-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .response-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .response-box pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: var(--accent-dark);
+        }
+
+        .loading {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--red-indonesia);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Documentation Section */
+        .docs-section {
+            margin: 60px 0;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--red-indonesia);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .endpoint-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .endpoint-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .endpoint-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red-indonesia);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .endpoint-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .endpoint-card:hover {
+            transform: translateX(5px);
+            border-color: var(--red-indonesia);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .endpoint-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--accent-dark);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .endpoint-path {
+            font-family: 'Courier New', monospace;
+            background: var(--bg-secondary);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: var(--accent-dark);
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            font-weight: 600;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .endpoint-path:hover {
+            border-color: var(--red-indonesia);
+            background: var(--bg-card);
+        }
+
+        .endpoint-path-text {
+            flex: 1;
+        }
+
+        .endpoint-copy-icon {
+            color: var(--red-indonesia);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .endpoint-path:hover .endpoint-copy-icon {
+            opacity: 1;
+        }
+
+        .endpoint-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .params-table {
+            margin-top: 20px;
+        }
+
+        .params-table h4 {
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .param-row {
+            background: var(--bg-secondary);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 15px;
+            align-items: start;
+        }
+
+        .param-name {
+            font-family: 'Courier New', monospace;
+            color: var(--red-indonesia);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .param-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .example-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .example-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            padding-top: 40px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-dark);
+            overflow-x: auto;
+        }
+
+        .code-copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 8px;
+            background: var(--red-indonesia);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .code-copy-btn:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .code-copy-btn.copied {
+            background: #27ae60;
+        }
+
+        .copy-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .code-label {
+            position: absolute;
+            top: 8px;
+            left: 15px;
+            background: var(--bg-primary);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            border: 1px solid var(--border);
+        }
+
+        .code-label {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: var(--bg-card);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.5s; }
+        .feature-card:nth-child(2) { animation-delay: 0.6s; }
+        .feature-card:nth-child(3) { animation-delay: 0.7s; }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--red-indonesia);
+            box-shadow: 0 8px 24px rgba(231, 76, 60, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: var(--red-indonesia);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-content {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-link:hover {
+            color: var(--red-indonesia);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .quick-try {
+                padding: 25px 20px;
+            }
+
+            .quick-try h2 {
+                font-size: 1.5rem;
+            }
+
+            .try-buttons {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .try-btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                text-align: center;
+            }
+
+            .endpoint-display {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px;
+            }
+
+            .endpoint-url {
+                padding-left: 15px;
+                padding-top: 40px;
+                font-size: 0.85rem;
+                word-break: break-all;
+            }
+
+            .endpoint-display::before {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: auto;
+                height: 30px;
+                width: 100%;
+                padding: 0;
+                justify-content: center;
+            }
+
+            .copy-btn {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+            }
+
+            .response-box {
+                padding: 15px;
+                font-size: 0.85rem;
+                max-height: 300px;
+            }
+
+            .param-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .endpoint-card {
+                padding: 20px;
+            }
+
+            .endpoint-card h3 {
+                font-size: 1.1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .endpoint-path {
+                font-size: 0.85rem;
+                padding: 10px 12px;
+            }
+
+            .code-block {
+                padding: 12px;
+            }
+
+            .code-block pre {
+                font-size: 0.75rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .badges {
+                gap: 10px;
+            }
+
+            .badge {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: -1px;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .quick-try {
+                padding: 20px 15px;
+            }
+
+            .quick-try h2 {
+                font-size: 1.3rem;
+            }
+
+            .quick-try p {
+                font-size: 0.9rem;
+            }
+
+            .try-btn {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+
+            .endpoint-display {
+                padding: 12px;
+            }
+
+            .endpoint-url {
+                font-size: 0.75rem;
+                padding-top: 35px;
+            }
+
+            .response-box {
+                padding: 12px;
+                font-size: 0.8rem;
+                max-height: 250px;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            .endpoint-card {
+                padding: 18px;
+            }
+
+            .endpoint-card h3 {
+                font-size: 1rem;
+            }
+
+            .endpoint-path {
+                font-size: 0.8rem;
+                padding: 8px 10px;
+            }
+
+            .code-block pre {
+                font-size: 0.7rem;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--red-indonesia);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-dark);
+        }
+
+        .json-key { color: var(--accent-dark); font-weight: 600; }
+        .json-string { color: var(--red-indonesia); }
+        .json-number { color: var(--accent-blue); }
+        .json-boolean { color: #27ae60; }
+
+        /* Override speed-highlight theme for code blocks */
+        .code-block pre {
+            background: transparent !important;
+            margin: 0;
+        }
+
+        .code-block pre code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            background: transparent !important;
+            color: var(--accent-dark);
+            display: block;
+            padding: 0;
+        }
+
+        .code-block .shj-syn-kwd { color: #c678dd; font-weight: 600; }
+        .code-block .shj-syn-cmnt { color: var(--text-muted); font-style: italic; }
+        .code-block .shj-syn-str { color: #98c379; }
+        .code-block .shj-syn-num { color: #d19a66; }
+        .code-block .shj-syn-func { color: #61afef; }
+        .code-block .shj-syn-oper { color: #56b6c2; }
+        .code-block .shj-syn-var { color: #e06c75; }
+        .code-block .shj-syn-class { color: #e5c07b; }
+        .code-block .shj-syn-insert { color: var(--accent-dark); background: transparent; }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🇮🇩</div>
             </div>
-            <div class="pt-8 text-base font-semibold leading-7">
-              <p class="text-gray-900">Source Code</p>
-              <p>
-                <a
-                  href="https://github.com/radyakaze/api-hari-libur"
-                  target="_blank"
-                  class="api-link"
-                  >Github &rarr;</a
-                >
-              </p>
+            <h1>API Hari Libur</h1>
+            <p class="tagline">Karena developer juga butuh tahu kapan <strong>tanggal merah</strong> 🇮🇩</p>
+            <div class="badges">
+                <div class="badge">
+                    <span>🇮🇩</span>
+                    <span>Data Indonesia</span>
+                </div>
+                <div class="badge">
+                    <span>⚡</span>
+                    <span>Gratis & Cepat</span>
+                </div>
+                <div class="badge">
+                    <span>🔓</span>
+                    <span>No API Key</span>
+                </div>
+                <div class="badge">
+                    <span>📱</span>
+                    <span>REST API</span>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+        </header>
+
+        <!-- Quick Try Section -->
+        <section class="quick-try">
+            <h2>🚀 Coba Langsung</h2>
+            <p>Pilih endpoint di bawah untuk melihat response secara real-time</p>
+
+            <div class="try-buttons">
+                <button class="try-btn active" data-endpoint="/api">Tahun Ini</button>
+                <button class="try-btn" data-endpoint="/api?year=2024">Tahun 2024</button>
+                <button class="try-btn" data-endpoint="/api?month=12">Bulan Ini</button>
+                <button class="try-btn" data-endpoint="/api?year=2024&month=12">Des 2024</button>
+                <button class="try-btn" data-endpoint="/api/today">Hari Ini</button>
+                <button class="try-btn" data-endpoint="/api/tomorrow">Besok</button>
+            </div>
+
+            <div class="endpoint-display">
+                <div class="endpoint-url" id="currentEndpoint">Loading...</div>
+                <button class="copy-btn" onclick="copyEndpoint()" title="Copy URL">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="response-box" id="responseBox">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Klik salah satu tombol di atas untuk melihat response...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Section -->
+        <section class="docs-section">
+            <div class="section-header">
+                <h2>📚 Dokumentasi API</h2>
+                <p>Panduan lengkap untuk menggunakan API Hari Libur Indonesia</p>
+            </div>
+
+            <div class="endpoint-grid">
+                <!-- Endpoint 1 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Semua Libur Tahun Ini
+                    </h3>
+                    <div class="endpoint-path">/api</div>
+                    <p class="endpoint-desc">
+                        Mendapatkan daftar semua hari libur dan cuti bersama pada tahun berjalan.
+                    </p>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">fetch('{{BASE_URL}}/api')
+  .then(res => res.json())
+  .then(data => console.log(data));</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoint 2 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Libur Tahun Tertentu
+                    </h3>
+                    <div class="endpoint-path">/api?year={tahun}</div>
+                    <p class="endpoint-desc">
+                        Mendapatkan daftar hari libur pada tahun yang ditentukan.
+                    </p>
+                    <div class="params-table">
+                        <h4>📋 Parameters</h4>
+                        <div class="param-row">
+                            <div class="param-name">year</div>
+                            <div class="param-desc">Tahun yang ingin dicari (contoh: 2024)</div>
+                        </div>
+                    </div>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">const year = 2024;
+
+fetch(`{{BASE_URL}}/api?year=${year}`)
+  .then(res => res.json())
+  .then(data => console.log(data));</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoint 3 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Libur Bulan Tertentu
+                    </h3>
+                    <div class="endpoint-path">/api?month={bulan}</div>
+                    <p class="endpoint-desc">
+                        Mendapatkan daftar hari libur pada bulan tertentu di tahun berjalan.
+                    </p>
+                    <div class="params-table">
+                        <h4>📋 Parameters</h4>
+                        <div class="param-row">
+                            <div class="param-name">month</div>
+                            <div class="param-desc">Bulan (1-12, contoh: 8 untuk Agustus)</div>
+                        </div>
+                    </div>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">const month = 8; // Agustus
+
+fetch(`{{BASE_URL}}/api?month=${month}`)
+  .then(res => res.json())
+  .then(data => console.log(data));</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoint 4 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Libur Bulan & Tahun
+                    </h3>
+                    <div class="endpoint-path">/api?year={tahun}&month={bulan}</div>
+                    <p class="endpoint-desc">
+                        Mendapatkan daftar hari libur pada bulan dan tahun yang spesifik.
+                    </p>
+                    <div class="params-table">
+                        <h4>📋 Parameters</h4>
+                        <div class="param-row">
+                            <div class="param-name">year</div>
+                            <div class="param-desc">Tahun yang ingin dicari</div>
+                        </div>
+                        <div class="param-row">
+                            <div class="param-name">month</div>
+                            <div class="param-desc">Bulan (1-12)</div>
+                        </div>
+                    </div>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">const year = 2024;
+const month = 8;
+
+fetch(`{{BASE_URL}}/api?year=${year}&month=${month}`)
+  .then(res => res.json())
+  .then(data => console.log(data));</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoint 5 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Cek Tanggal Spesifik
+                    </h3>
+                    <div class="endpoint-path">/api?year={tahun}&month={bulan}&day={hari}</div>
+                    <p class="endpoint-desc">
+                        Mengecek apakah tanggal tertentu adalah hari libur atau bukan.
+                    </p>
+                    <div class="params-table">
+                        <h4>📋 Parameters</h4>
+                        <div class="param-row">
+                            <div class="param-name">year</div>
+                            <div class="param-desc">Tahun</div>
+                        </div>
+                        <div class="param-row">
+                            <div class="param-name">month</div>
+                            <div class="param-desc">Bulan (1-12)</div>
+                        </div>
+                        <div class="param-row">
+                            <div class="param-name">day</div>
+                            <div class="param-desc">Tanggal (1-31)</div>
+                        </div>
+                    </div>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">const year = 2024;
+const month = 8;
+const day = 17;
+
+fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
+  .then(res => res.json())
+  .then(data => {
+    if (data.is_cuti) {
+      console.log(`${data.name} - Libur!`);
+    } else {
+      console.log('Bukan hari libur');
+    }
+  });</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoint 6 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Cek Hari Ini
+                    </h3>
+                    <div class="endpoint-path">/api/today</div>
+                    <p class="endpoint-desc">
+                        Mengecek apakah hari ini adalah hari libur atau tidak.
+                    </p>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">fetch('{{BASE_URL}}/api/today')
+  .then(res => res.json())
+  .then(data => {
+    if (data.is_holiday) {
+      console.log('🎉 Hari ini libur!');
+      console.log('Libur:', data.holiday_list.join(', '));
+    } else {
+      console.log('💼 Hari ini kerja');
+    }
+  });</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoint 7 -->
+                <div class="endpoint-card">
+                    <h3>
+                        <span class="method-badge">GET</span>
+                        Cek Besok
+                    </h3>
+                    <div class="endpoint-path">/api/tomorrow</div>
+                    <p class="endpoint-desc">
+                        Mengecek apakah besok adalah hari libur atau tidak.
+                    </p>
+                    <div class="example-section">
+                        <h4>💡 Contoh Request</h4>
+                        <div class="code-block">
+                            <span class="code-label">JavaScript</span>
+                            <pre class="api-code">fetch('{{BASE_URL}}/api/tomorrow')
+  .then(res => res.json())
+  .then(data => {
+    if (data.is_holiday) {
+      console.log('🎉 Besok libur!');
+      console.log('Libur:', data.holiday_list.join(', '));
+    } else {
+      console.log('💼 Besok masih kerja');
+    }
+  });</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Response Format Section -->
+        <section class="docs-section">
+            <div class="section-header">
+                <h2>📊 Format Response</h2>
+                <p>Struktur data yang dikembalikan oleh API</p>
+            </div>
+
+            <div class="endpoint-card">
+                <h3>Response untuk List Hari Libur</h3>
+                <p class="endpoint-desc">
+                    Endpoint yang mengembalikan daftar hari libur akan memberikan array of objects dengan struktur berikut:
+                </p>
+                <div class="code-block">
+                    <span class="code-label">JSON</span>
+                    <pre>[
+  {
+    <span class="json-key">"date"</span>: <span class="json-string">"2026-01-01"</span>,
+    <span class="json-key">"name"</span>: <span class="json-string">"Tahun Baru 2026 Masehi"</span>
+  },
+  {
+    <span class="json-key">"date"</span>: <span class="json-string">"2026-01-16"</span>,
+    <span class="json-key">"name"</span>: <span class="json-string">"Isra Mikraj Nabi Muhammad S.A.W."</span>
+  },
+  {
+    <span class="json-key">"date"</span>: <span class="json-string">"2026-08-17"</span>,
+    <span class="json-key">"name"</span>: <span class="json-string">"Proklamasi Kemerdekaan"</span>
+  }
+]</pre>
+                </div>
+
+                <div class="params-table" style="margin-top: 25px;">
+                    <h4>📋 Field Descriptions</h4>
+                    <div class="param-row">
+                        <div class="param-name">date</div>
+                        <div class="param-desc">Tanggal libur dalam format YYYY-MM-DD</div>
+                    </div>
+                    <div class="param-row">
+                        <div class="param-name">name</div>
+                        <div class="param-desc">Nama hari libur atau cuti bersama</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="endpoint-card" style="margin-top: 25px;">
+                <h3>Response untuk /today dan /tomorrow</h3>
+                <p class="endpoint-desc">
+                    Endpoint /api/today dan /api/tomorrow akan mengembalikan:
+                </p>
+                <div class="code-block">
+                    <span class="code-label">JSON - Jika Libur</span>
+                    <pre>{
+  <span class="json-key">"date"</span>: <span class="json-string">"2026-08-17"</span>,
+  <span class="json-key">"is_holiday"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"holiday_list"</span>: [<span class="json-string">"Proklamasi Kemerdekaan"</span>]
+}</pre>
+                </div>
+
+                <div class="code-block">
+                    <span class="code-label">JSON - Jika Bukan Libur</span>
+                    <pre>{
+  <span class="json-key">"date"</span>: <span class="json-string">"2026-01-13"</span>,
+  <span class="json-key">"is_holiday"</span>: <span class="json-boolean">false</span>,
+  <span class="json-key">"holiday_list"</span>: []
+}</pre>
+                </div>
+
+                <div class="params-table" style="margin-top: 25px;">
+                    <h4>📋 Field Descriptions</h4>
+                    <div class="param-row">
+                        <div class="param-name">date</div>
+                        <div class="param-desc">Tanggal yang dicek dalam format YYYY-MM-DD</div>
+                    </div>
+                    <div class="param-row">
+                        <div class="param-name">is_holiday</div>
+                        <div class="param-desc">Boolean - true jika tanggal tersebut adalah hari libur/cuti</div>
+                    </div>
+                    <div class="param-row">
+                        <div class="param-name">holiday_list</div>
+                        <div class="param-desc">Array of string - Daftar nama hari libur (kosong jika bukan libur)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="docs-section">
+            <div class="section-header">
+                <h2>✨ Kenapa Pakai API Ini?</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Mudah Digunakan</h3>
+                    <p>Tidak perlu API key, tidak perlu registrasi. Langsung pakai dan integrasikan ke aplikasi Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Data Akurat</h3>
+                    <p>Data hari libur dan cuti bersama resmi dari pemerintah Indonesia, selalu up-to-date.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performa Cepat</h3>
+                    <p>Response time cepat dengan infrastruktur Deno Deploy yang reliable dan scalable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section class="docs-section">
+            <div class="section-header">
+                <h2>💡 Use Cases</h2>
+                <p>Ide penggunaan API ini dalam aplikasi Anda</p>
+            </div>
+
+            <div class="endpoint-grid">
+                <div class="endpoint-card">
+                    <h3>🗓️ Aplikasi Kalender</h3>
+                    <p class="endpoint-desc">
+                        Tandai hari libur nasional dan cuti bersama secara otomatis di aplikasi kalender Anda.
+                    </p>
+                    <div class="code-block">
+                        <pre class="api-code">// Highlight tanggal merah di kalender
+const holidays = await fetchHolidays(2024);
+calendar.markDates(holidays);</pre>
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <h3>💼 HR Management System</h3>
+                    <p class="endpoint-desc">
+                        Integrasikan dengan sistem absensi untuk menghitung hari kerja efektif dan cuti karyawan.
+                    </p>
+                    <div class="code-block">
+                        <pre class="api-code">// Hitung hari kerja dalam sebulan
+const workDays = calculateWorkDays(
+  month, holidays
+);</pre>
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <h3>📱 Reminder App</h3>
+                    <p class="endpoint-desc">
+                        Kirim notifikasi sebelum hari libur untuk membantu planning aktivitas pengguna.
+                    </p>
+                    <div class="code-block">
+                        <pre class="api-code">// Cek hari libur besok
+if (await isTomorrowHoliday()) {
+  sendNotification();
+}</pre>
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <h3>🏢 Scheduling System</h3>
+                    <p class="endpoint-desc">
+                        Hindari penjadwalan meeting atau event pada hari libur nasional.
+                    </p>
+                    <div class="code-block">
+                        <pre class="api-code">// Validasi tanggal meeting
+if (isHoliday(selectedDate)) {
+  showWarning();
+}</pre>
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <h3>📊 Business Intelligence</h3>
+                    <p class="endpoint-desc">
+                        Analisis performa bisnis dengan memperhitungkan hari libur dalam laporan.
+                    </p>
+                    <div class="code-block">
+                        <pre class="api-code">// Adjust metrics berdasarkan workdays
+const adjusted = revenue /
+  getWorkingDays(month);</pre>
+                    </div>
+                </div>
+
+                <div class="endpoint-card">
+                    <h3>🎯 Project Management</h3>
+                    <p class="endpoint-desc">
+                        Hitung deadline dan estimasi proyek dengan akurat berdasarkan hari kerja.
+                    </p>
+                    <div class="code-block">
+                        <pre class="api-code">// Calculate project deadline
+const deadline = addWorkingDays(
+  startDate, duration, holidays
+);</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>Data hari libur bersumber dari <a href="https://www.tanggalan.com/" target="_blank" style="color: var(--red-indonesia); text-decoration: none; font-weight: 600;">tanggalan.com</a></p>
+                <p style="margin-top: 10px;">Dibuat dengan ❤️ untuk memudahkan developer Indonesia</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/radyakaze/api-hari-libur" target="_blank" class="footer-link">
+                    <span>💻</span>
+                    <span>Source Code</span>
+                </a>
+                <a href="https://github.com/radyakaze/api-hari-libur/issues" target="_blank" class="footer-link">
+                    <span>🐛</span>
+                    <span>Report Issue</span>
+                </a>
+                <a href="https://github.com/radyakaze" target="_blank" class="footer-link">
+                    <span>👨‍💻</span>
+                    <span>Developer</span>
+                </a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 20px;">
+                © 2026 API Hari Libur Indonesia. Open Source Project.
+            </p>
+        </footer>
     </div>
-  </body>
+
+    <script>
+        // Get BASE_URL from current page URL or fallback to production
+        const BASE_URL = window.location.origin;
+
+        let currentEndpoint = '/api';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial endpoint display
+            document.getElementById('currentEndpoint').textContent = BASE_URL + '/api';
+
+            // Replace {{BASE_URL}} placeholders in all code examples and apply highlighting
+            document.querySelectorAll('.api-code').forEach(code => {
+                const originalText = code.textContent;
+
+                // Replace BASE_URL only if it contains the placeholder
+                if (originalText.includes('{{BASE_URL}}')) {
+                    code.textContent = originalText.replace(/\{\{BASE_URL\}\}/g, BASE_URL);
+                }
+
+                // Wrap in code tag if not already wrapped
+                if (code.tagName !== 'CODE') {
+                    const codeElement = document.createElement('code');
+                    codeElement.className = 'language-js';
+                    codeElement.textContent = code.textContent;
+                    code.textContent = '';
+                    code.appendChild(codeElement);
+                }
+
+                // Apply syntax highlighting when library is loaded
+                setTimeout(() => {
+                    if (window.highlightCode) {
+                        const codeElement = code.querySelector('code') || code;
+                        window.highlightCode(codeElement, 'js');
+                    }
+                }, 100);
+            });
+
+            fetchData('/api');
+
+            // Add click handlers to try buttons
+            document.querySelectorAll('.try-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.try-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const endpoint = this.getAttribute('data-endpoint');
+                    currentEndpoint = endpoint;
+                    document.getElementById('currentEndpoint').textContent = BASE_URL + endpoint;
+                    fetchData(endpoint);
+                });
+            });
+
+            // Add copy functionality to all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                const pre = block.querySelector('pre');
+                if (pre) {
+                    const button = document.createElement('button');
+                    button.className = 'code-copy-btn';
+                    button.title = 'Copy code';
+                    button.innerHTML = `
+                        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    `;
+                    button.onclick = () => copyCode(button, pre);
+                    block.appendChild(button);
+                }
+            });
+
+            // Add copy functionality to endpoint paths
+            document.querySelectorAll('.endpoint-path').forEach(path => {
+                // Skip if already has copy structure
+                if (path.querySelector('.endpoint-path-text')) return;
+
+                const text = path.textContent.trim();
+                path.innerHTML = `
+                    <span class="endpoint-path-text">${text}</span>
+                    <svg class="endpoint-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                `;
+                path.onclick = () => copyEndpointPath(path, text);
+                path.title = 'Click to copy full URL';
+            });
+        });
+
+        async function fetchData(endpoint) {
+            const responseBox = document.getElementById('responseBox');
+
+            // Show loading
+            responseBox.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Memuat data...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(BASE_URL + endpoint);
+                const data = await response.json();
+
+                // Format and display JSON
+                const formatted = JSON.stringify(data, null, 2);
+                const highlighted = highlightJSON(formatted);
+
+                responseBox.innerHTML = `<pre>${highlighted}</pre>`;
+            } catch (error) {
+                responseBox.innerHTML = `
+                    <div class="loading">
+                        <p style="color: var(--red-indonesia);">❌ Error: ${error.message}</p>
+                        <p style="color: var(--text-muted); margin-top: 10px;">Pastikan endpoint tersedia dan coba lagi.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function highlightJSON(json) {
+            return json
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"([^"]+)":/g, '<span class="json-key">"$1"</span>:')
+                .replace(/: "([^"]+)"/g, ': <span class="json-string">"$1"</span>')
+                .replace(/: (\d+)/g, ': <span class="json-number">$1</span>')
+                .replace(/: (true|false)/g, ': <span class="json-boolean">$1</span>');
+        }
+
+        function copyEndpoint() {
+            const endpoint = document.getElementById('currentEndpoint').textContent;
+            const btn = document.querySelector('.copy-btn');
+
+            navigator.clipboard.writeText(endpoint).then(() => {
+                btn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                btn.title = 'Copied!';
+                btn.style.background = '#27ae60';
+
+                setTimeout(() => {
+                    btn.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    `;
+                    btn.title = 'Copy URL';
+                    btn.style.background = 'var(--red-indonesia)';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                btn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                `;
+                btn.title = 'Failed to copy';
+                setTimeout(() => {
+                    btn.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    `;
+                    btn.title = 'Copy URL';
+                }, 2000);
+            });
+        }
+
+        function copyCode(button, pre) {
+            // Get text content without HTML tags
+            const code = pre.textContent;
+
+            navigator.clipboard.writeText(code).then(() => {
+                button.innerHTML = `
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                button.title = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.innerHTML = `
+                        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    `;
+                    button.title = 'Copy code';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                button.innerHTML = `
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                `;
+                button.title = 'Failed to copy';
+                setTimeout(() => {
+                    button.innerHTML = `
+                        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    `;
+                    button.title = 'Copy code';
+                }, 2000);
+            });
+        }
+
+        function copyEndpointPath(element, path) {
+            // Add full URL with base
+            const fullUrl = BASE_URL + path;
+            const icon = element.querySelector('.endpoint-copy-icon');
+
+            navigator.clipboard.writeText(fullUrl).then(() => {
+                icon.outerHTML = `
+                    <svg class="endpoint-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                element.style.background = '#e8f5e9';
+                element.style.borderColor = '#27ae60';
+                element.title = 'Copied!';
+
+                setTimeout(() => {
+                    const newIcon = element.querySelector('.endpoint-copy-icon');
+                    if (newIcon) {
+                        newIcon.outerHTML = `
+                            <svg class="endpoint-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        `;
+                    }
+                    element.style.background = '';
+                    element.style.borderColor = '';
+                    element.title = 'Click to copy full URL';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+
+    <!-- Speed Highlight JS -->
+    <script type="module">
+        import { highlightElement } from 'https://unpkg.com/@speed-highlight/core/dist/index.js';
+
+        // Export to global scope for use in main script
+        window.highlightCode = highlightElement;
+    </script>
+</body>
 </html>
