@@ -1,4 +1,5 @@
-import { DOMParser, HTMLDocument } from 'deno-dom'
+///<reference lib="dom" />
+import { DOMParser } from '@b-fuze/deno-dom'
 import { MONTH_NAME } from '@/constants/month.ts'
 
 const fetcher = async (year: string) => {
@@ -22,20 +23,20 @@ export const crawler = async (year: string) => {
     throw new Error('Failed to parse DOM')
   }
 
-  return (Array.from(months) as HTMLDocument[]).flatMap((item) => {
+  return Array.from(months).flatMap((item) => {
     const [monthName, year] = item
-      .querySelector('li:first-child a')
+      .querySelector<HTMLAnchorElement>('li:first-child a')
       ?.getAttribute('href')
       ?.split('-') || []
 
     const month = MONTH_NAME[monthName as keyof typeof MONTH_NAME]
 
-    return (Array.from(
+    return Array.from(
       item.querySelectorAll('li:last-child table tr'),
-    ) as HTMLDocument[])
+    )
       .flatMap((holiday) => {
-        const day = holiday.querySelector('td:first-child')?.textContent.trim()
-        const name = holiday.querySelector('td:last-child')?.textContent.trim()
+        const day = holiday.querySelector<HTMLTableCellElement>('td:first-child')?.textContent.trim()
+        const name = holiday.querySelector<HTMLTableCellElement>('td:last-child')?.textContent.trim() as string
 
         if (day && day.includes('-')) {
           const split = day.split('-', 2)
