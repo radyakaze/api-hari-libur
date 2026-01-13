@@ -1,20 +1,28 @@
 import { crawler } from '@/libraries/scraper.ts'
 
-export const getHoliday = async (kv: Deno.Kv, year: string, month?: string) => {
-  const holiday = await getHolidayYearly(kv, year)
+type Holiday = { name: string; date: string }
 
-  if (!month) {
-    return holiday
-  }
+export const getHoliday = async (
+  kv: Deno.Kv,
+  year: string,
+  month?: string
+): Promise<Holiday[]> => {
+  const holidays = await getHolidayYearly(kv, year)
 
-  return holiday.filter((item) => {
-    return item.date.startsWith(`${year}-${month.padStart(2, '0')}`)
-  })
+  if (!month) return holidays
+
+  const monthPadded = month.padStart(2, '0')
+  const prefix = `${year}-${monthPadded}`
+
+  return holidays.filter(item => item.date.startsWith(prefix))
 }
 
-export const getHolidayDate = async (kv: Deno.Kv, date: Date) => {
+export const getHolidayDate = async (
+  kv: Deno.Kv,
+  date: Date
+) => {
   const current = new Date(
-    date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }),
+    date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
   )
 
   const year = current.getFullYear().toString()
@@ -22,11 +30,10 @@ export const getHolidayDate = async (kv: Deno.Kv, date: Date) => {
   const day = current.getDate().toString().padStart(2, '0')
   const formattedDate = `${year}-${month}-${day}`
 
-  const holiday = await getHolidayYearly(kv, year)
-
-  const holidayList = holiday
-    .filter((item) => item.date === formattedDate)
-    .map((item) => item.name)
+  const holidays = await getHolidayYearly(kv, year)
+  const holidayList = holidays
+    .filter(item => item.date === formattedDate)
+    .map(item => item.name)
 
   return {
     date: formattedDate,
@@ -35,26 +42,29 @@ export const getHolidayDate = async (kv: Deno.Kv, date: Date) => {
   }
 }
 
-export const getHolidayYearly = async (kv: Deno.Kv, year: string) => {
-  const res = kv.get<{ name: string; date: string }[]>([year])
+export const getHolidayYearly = async (
+  kv: Deno.Kv,
+  year: string
+): Promise<Holiday[]> => {
+  const cached = await kv.get<Holiday[]>([year])
 
-  const value = (await res).value
+  if (cached.value) return cached.value
 
-  if (!value) {
-    const data = await getData(year)
-    const expireIn = Number(year) >= new Date().getFullYear() ? 1000 * 60 * 60 * 24 * 30 : undefined
+  const data = await getData(year)
 
-    await kv.set([year], data, {
-      expireIn,
-    })
+  if (data.length === 0) return data
 
-    return data
-  }
+  const currentYear = new Date().getFullYear()
+  const expireIn = Number(year) >= currentYear
+    ? 1000 * 60 * 60 * 24 * 30
+    : undefined
 
-  return value
+  await kv.set([year], data, { expireIn })
+
+  return data
 }
 
-const getData = async (year: string) => {
+const getData = async (year: string): Promise<Holiday[]> => {
   try {
     return await crawler(year)
   } catch {

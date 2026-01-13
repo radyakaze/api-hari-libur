@@ -1,22 +1,38 @@
-import { type Context, Hono } from 'hono'
-import { serveStatic, cors, logger } from 'hono/middleware'
-import { zodValidator } from '@/libraries/validation.ts'
+import { type Context, Hono } from '@hono/hono'
+import { cors } from '@hono/hono/cors'
+import { logger } from '@hono/hono/logger'
+import { serveStatic } from '@hono/hono/deno'
+import { cache } from '@hono/hono/cache'
 import { getHoliday, getHolidayDate } from '@/libraries/holiday.ts'
 import { dateSchema } from '@/schema/date_schema.ts'
+import { zValidator } from '@/middleware/zod.ts'
+import { HTTPException } from '@hono/hono/http-exception'
 
 const kv = await Deno.openKv()
 
 const app = new Hono()
 
 app.use('*', logger())
-app.use('/api/*', cors({
-  origin: '*',
-  allowMethods: ['GET']
-}))
+app.use(
+  '/api/*',
+  cors({
+    origin: '*',
+    allowMethods: ['GET'],
+  }),
+)
+
+app.get(
+  '/api/*',
+  cache({
+    cacheName: 'api-hari-libur',
+    cacheControl: 'max-age=900',
+    wait: true,
+  })
+)
 
 app.get(
   '/api',
-  zodValidator('query', dateSchema),
+  zValidator('query', dateSchema),
   async (c: Context) => {
     const year = c.req.query('year') || new Date().getFullYear().toString()
     const month = c.req.query('month')
@@ -58,9 +74,18 @@ app.get(
 app.get('*', serveStatic({ root: './public' }))
 
 app.onError((err: Error, c: Context) => {
+  if (err instanceof HTTPException) {
+    return c.json({
+      message: err.message.toString(),
+      errors: err.cause,
+    }, err.status)
+  }
+
   return c.json({
     message: err.message.toString(),
   }, 500)
 })
 
-Deno.serve(app.fetch)
+export default {
+  fetch: app.fetch,
+} satisfies Deno.ServeDefaultExport;

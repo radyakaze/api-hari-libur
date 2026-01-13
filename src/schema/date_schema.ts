@@ -42,7 +42,7 @@ export const dateSchema = z.object({
       if (!month) {
         ctx.addIssue({
           path: ['month'],
-          code: z.ZodIssueCode.custom,
+          code: 'custom',
           message: 'Month is required when specifying day'
         })
 
@@ -54,7 +54,7 @@ export const dateSchema = z.object({
       if (parsedDate.getFullYear() !== year || parsedDate.getMonth() !== month - 1 || parsedDate.getDate() !== day) {
         ctx.addIssue({
           path: ['day'],
-          code: z.ZodIssueCode.invalid_date,
+          code: 'custom',
           message: 'The provided date is not valid'
         })
       }
