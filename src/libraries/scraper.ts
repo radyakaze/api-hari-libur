@@ -43,7 +43,7 @@ export const crawler = async (year: string) => {
           const start = Number(split[0])
           const end = Number(split[1])
 
-          return Array.from({ length: end - start })
+          return Array.from({ length: end - start + 1 })
             .fill(start)
             .flatMap((value, index) => {
               return {
