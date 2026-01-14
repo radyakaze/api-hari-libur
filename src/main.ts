@@ -2,7 +2,6 @@ import { type Context, Hono } from '@hono/hono'
 import { cors } from '@hono/hono/cors'
 import { logger } from '@hono/hono/logger'
 import { serveStatic } from '@hono/hono/deno'
-import { cache } from '@hono/hono/cache'
 import { getHoliday, getHolidayDate } from '@/libraries/holiday.ts'
 import { dateSchema } from '@/schema/date_schema.ts'
 import { zValidator } from '@/middleware/zod.ts'
@@ -19,15 +18,6 @@ app.use(
     origin: '*',
     allowMethods: ['GET'],
   }),
-)
-
-app.get(
-  '/api/*',
-  cache({
-    cacheName: 'api-hari-libur',
-    cacheControl: 'max-age=900',
-    wait: true,
-  })
 )
 
 app.get(
