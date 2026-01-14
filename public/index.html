@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Hari Libur Indonesia - Karena Rakyat Suka Tanggal Merah</title>
+    <title>API Hari Libur Indonesia - Karena Developer Juga Butuh Tahu Kapan Tanggal Merah</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1207,8 +1211,9 @@ const day = 17;
 fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
   .then(res => res.json())
   .then(data => {
-    if (data.is_cuti) {
-      console.log(`${data.name} - Libur!`);
+    if (data.is_holiday) {
+      console.log('🎉 Tanggal ini libur!');
+      console.log('Libur:', data.holiday_list.join(', '));
     } else {
       console.log('Bukan hari libur');
     }
@@ -1319,9 +1324,9 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
             </div>
 
             <div class="endpoint-card" style="margin-top: 25px;">
-                <h3>Response untuk /today dan /tomorrow</h3>
+                <h3>Response untuk Cek Tanggal (today/tomorrow/specific date)</h3>
                 <p class="endpoint-desc">
-                    Endpoint /api/today dan /api/tomorrow akan mengembalikan:
+                    Endpoint /api/today, /api/tomorrow, dan query dengan parameter lengkap (year, month, day) menggunakan format yang sama:
                 </p>
                 <div class="code-block">
                     <span class="code-label">JSON - Jika Libur</span>
@@ -1397,11 +1402,6 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
                     <p class="endpoint-desc">
                         Tandai hari libur nasional dan cuti bersama secara otomatis di aplikasi kalender Anda.
                     </p>
-                    <div class="code-block">
-                        <pre class="api-code">// Highlight tanggal merah di kalender
-const holidays = await fetchHolidays(2024);
-calendar.markDates(holidays);</pre>
-                    </div>
                 </div>
 
                 <div class="endpoint-card">
@@ -1409,12 +1409,6 @@ calendar.markDates(holidays);</pre>
                     <p class="endpoint-desc">
                         Integrasikan dengan sistem absensi untuk menghitung hari kerja efektif dan cuti karyawan.
                     </p>
-                    <div class="code-block">
-                        <pre class="api-code">// Hitung hari kerja dalam sebulan
-const workDays = calculateWorkDays(
-  month, holidays
-);</pre>
-                    </div>
                 </div>
 
                 <div class="endpoint-card">
@@ -1422,12 +1416,6 @@ const workDays = calculateWorkDays(
                     <p class="endpoint-desc">
                         Kirim notifikasi sebelum hari libur untuk membantu planning aktivitas pengguna.
                     </p>
-                    <div class="code-block">
-                        <pre class="api-code">// Cek hari libur besok
-if (await isTomorrowHoliday()) {
-  sendNotification();
-}</pre>
-                    </div>
                 </div>
 
                 <div class="endpoint-card">
@@ -1435,12 +1423,6 @@ if (await isTomorrowHoliday()) {
                     <p class="endpoint-desc">
                         Hindari penjadwalan meeting atau event pada hari libur nasional.
                     </p>
-                    <div class="code-block">
-                        <pre class="api-code">// Validasi tanggal meeting
-if (isHoliday(selectedDate)) {
-  showWarning();
-}</pre>
-                    </div>
                 </div>
 
                 <div class="endpoint-card">
@@ -1448,11 +1430,6 @@ if (isHoliday(selectedDate)) {
                     <p class="endpoint-desc">
                         Analisis performa bisnis dengan memperhitungkan hari libur dalam laporan.
                     </p>
-                    <div class="code-block">
-                        <pre class="api-code">// Adjust metrics berdasarkan workdays
-const adjusted = revenue /
-  getWorkingDays(month);</pre>
-                    </div>
                 </div>
 
                 <div class="endpoint-card">
@@ -1460,12 +1437,6 @@ const adjusted = revenue /
                     <p class="endpoint-desc">
                         Hitung deadline dan estimasi proyek dengan akurat berdasarkan hari kerja.
                     </p>
-                    <div class="code-block">
-                        <pre class="api-code">// Calculate project deadline
-const deadline = addWorkingDays(
-  startDate, duration, holidays
-);</pre>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1490,8 +1461,8 @@ const deadline = addWorkingDays(
                     <span>Developer</span>
                 </a>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 20px;">
-                © 2026 API Hari Libur Indonesia. Open Source Project.
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 20px;" id="copyright">
+                © <span id="currentYear">2024</span> API Hari Libur Indonesia. Open Source Project.
             </p>
         </footer>
     </div>
@@ -1501,6 +1472,9 @@ const deadline = addWorkingDays(
         const BASE_URL = window.location.origin;
 
         let currentEndpoint = '/api';
+
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
