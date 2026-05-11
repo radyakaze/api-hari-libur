@@ -53,7 +53,6 @@ export const crawler = async (year: string) => {
               return {
                 date: `${year}-${month}-${(Number(value) + index).toString().padStart(2, '0')}`,
                 name,
-                is_national_holiday: !name?.toLowerCase().includes('cuti bersama')
               }
             })
         }
@@ -61,7 +60,6 @@ export const crawler = async (year: string) => {
         return {
           date: `${year}-${month}-${day?.padStart(2, '0')}`,
           name,
-          is_national_holiday: !name?.toLowerCase().includes('cuti bersama'),
         }
       })
       .filter(holiday => !!holiday)

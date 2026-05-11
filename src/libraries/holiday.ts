@@ -1,20 +1,25 @@
 import { crawler } from '@/libraries/scraper.ts'
 
-type Holiday = { name: string; date: string; is_national_holiday: boolean }
+type Holiday = { name: string; date: string }
 
 export const getHoliday = async (
   kv: Deno.Kv,
   year: string,
   month?: string
-): Promise<Holiday[]> => {
+): Promise<(Holiday & { is_national_holiday: boolean })[]> => {
   const holidays = await getHolidayYearly(kv, year)
 
-  if (!month) return holidays
+  const result = holidays.map((h) => ({
+    ...h,
+    is_national_holiday: !h.name.toLowerCase().includes('cuti bersama'),
+  }))
+
+  if (!month) return result
 
   const monthPadded = month.padStart(2, '0')
   const prefix = `${year}-${monthPadded}`
 
-  return holidays.filter(item => item.date.startsWith(prefix))
+  return result.filter((item) => item.date.startsWith(prefix))
 }
 
 export const getHolidayDate = async (
@@ -37,7 +42,9 @@ export const getHolidayDate = async (
   return {
     date: formattedDate,
     is_holiday: holidayList.length > 0,
-    is_national_holiday: dayHolidays.some((holiday) => holiday.is_national_holiday),
+    is_national_holiday: dayHolidays.some(
+      (holiday) => !holiday.name.toLowerCase().includes('cuti bersama')
+    ),
     holiday_list: holidayList,
   }
 }
@@ -64,9 +71,9 @@ export const getHolidayYearly = async (
   return data
 }
 
-const getData = async (year: string): Promise<Holiday[]> => {
+const getData = (year: string): Promise<Holiday[]> | never[] => {
   try {
-    return await crawler(year)
+    return crawler(year)
   } catch {
     return []
   }
