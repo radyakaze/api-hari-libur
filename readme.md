@@ -2,7 +2,7 @@
 
 This repository contains a Deno-based API application that provides information
 about public holidays in Indonesia. The holiday data is sourced from
-[tanggalan.com](https://www.tanggalan.com/), offering up-to-date and accurate
+[tanggalans.com](https://www.tanggalans.com/), offering up-to-date and accurate
 information.
 
 ## Usage
@@ -48,7 +48,7 @@ for details.
 
 ## Acknowledgments
 
-- The holiday data is sourced from [tanggalan.com](https://www.tanggalan.com/).
+- The holiday data is sourced from [tanggalans.com](https://www.tanggalans.com/).
 - Special thanks to the Deno community for providing a robust and secure
   runtime.
 

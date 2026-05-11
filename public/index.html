@@ -542,7 +542,7 @@
             border-radius: 8px;
             margin-bottom: 8px;
             display: grid;
-            grid-template-columns: 120px 1fr;
+            grid-template-columns: 160px 1fr;
             gap: 15px;
             align-items: start;
         }
@@ -1214,8 +1214,9 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
     if (data.is_holiday) {
       console.log('🎉 Tanggal ini libur!');
       console.log('Libur:', data.holiday_list.join(', '));
+      console.log('Libur Nasional:', data.is_national_holiday ? 'Ya' : 'Cuti Bersama');
     } else {
-      console.log('Bukan hari libur');
+      console.log('💼 Bukan hari libur');
     }
   });</pre>
                         </div>
@@ -1242,6 +1243,7 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
     if (data.is_holiday) {
       console.log('🎉 Hari ini libur!');
       console.log('Libur:', data.holiday_list.join(', '));
+      console.log('Libur Nasional:', data.is_national_holiday ? 'Ya' : 'Cuti Bersama');
     } else {
       console.log('💼 Hari ini kerja');
     }
@@ -1270,6 +1272,7 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
     if (data.is_holiday) {
       console.log('🎉 Besok libur!');
       console.log('Libur:', data.holiday_list.join(', '));
+      console.log('Libur Nasional:', data.is_national_holiday ? 'Ya' : 'Cuti Bersama');
     } else {
       console.log('💼 Besok masih kerja');
     }
@@ -1297,15 +1300,18 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
                     <pre>[
   {
     <span class="json-key">"date"</span>: <span class="json-string">"2026-01-01"</span>,
-    <span class="json-key">"name"</span>: <span class="json-string">"Tahun Baru 2026 Masehi"</span>
+    <span class="json-key">"name"</span>: <span class="json-string">"Tahun Baru 2026 Masehi"</span>,
+    <span class="json-key">"is_national_holiday"</span>: <span class="json-boolean">true</span>
   },
   {
     <span class="json-key">"date"</span>: <span class="json-string">"2026-01-16"</span>,
-    <span class="json-key">"name"</span>: <span class="json-string">"Isra Mikraj Nabi Muhammad S.A.W."</span>
+    <span class="json-key">"name"</span>: <span class="json-string">"Isra Mikraj Nabi Muhammad S.A.W."</span>,
+    <span class="json-key">"is_national_holiday"</span>: <span class="json-boolean">true</span>
   },
   {
     <span class="json-key">"date"</span>: <span class="json-string">"2026-08-17"</span>,
-    <span class="json-key">"name"</span>: <span class="json-string">"Proklamasi Kemerdekaan"</span>
+    <span class="json-key">"name"</span>: <span class="json-string">"Proklamasi Kemerdekaan"</span>,
+    <span class="json-key">"is_national_holiday"</span>: <span class="json-boolean">true</span>
   }
 ]</pre>
                 </div>
@@ -1320,6 +1326,10 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
                         <div class="param-name">name</div>
                         <div class="param-desc">Nama hari libur atau cuti bersama</div>
                     </div>
+                    <div class="param-row">
+                        <div class="param-name">is_national_holiday</div>
+                        <div class="param-desc">Boolean - true jika hari libur nasional, false jika cuti bersama</div>
+                    </div>
                 </div>
             </div>
 
@@ -1333,6 +1343,7 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
                     <pre>{
   <span class="json-key">"date"</span>: <span class="json-string">"2026-08-17"</span>,
   <span class="json-key">"is_holiday"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"is_national_holiday"</span>: <span class="json-boolean">true</span>,
   <span class="json-key">"holiday_list"</span>: [<span class="json-string">"Proklamasi Kemerdekaan"</span>]
 }</pre>
                 </div>
@@ -1342,6 +1353,7 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
                     <pre>{
   <span class="json-key">"date"</span>: <span class="json-string">"2026-01-13"</span>,
   <span class="json-key">"is_holiday"</span>: <span class="json-boolean">false</span>,
+  <span class="json-key">"is_national_holiday"</span>: <span class="json-boolean">false</span>,
   <span class="json-key">"holiday_list"</span>: []
 }</pre>
                 </div>
@@ -1355,6 +1367,10 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
                     <div class="param-row">
                         <div class="param-name">is_holiday</div>
                         <div class="param-desc">Boolean - true jika tanggal tersebut adalah hari libur/cuti</div>
+                    </div>
+                    <div class="param-row">
+                        <div class="param-name">is_national_holiday</div>
+                        <div class="param-desc">Boolean - true jika terdapat hari libur nasional (bukan cuti bersama)</div>
                     </div>
                     <div class="param-row">
                         <div class="param-name">holiday_list</div>
@@ -1444,7 +1460,7 @@ fetch(`{{BASE_URL}}/api?year=${year}&month=${month}&day=${day}`)
         <!-- Footer -->
         <footer>
             <div class="footer-content">
-                <p>Data hari libur bersumber dari <a href="https://www.tanggalan.com/" target="_blank" style="color: var(--red-indonesia); text-decoration: none; font-weight: 600;">tanggalan.com</a></p>
+                <p>Data hari libur bersumber dari <a href="https://tanggalans.com" target="_blank" style="color: var(--red-indonesia); text-decoration: none; font-weight: 600;">tanggalans.com</a></p>
                 <p style="margin-top: 10px;">Dibuat dengan ❤️ untuk memudahkan developer Indonesia</p>
             </div>
             <div class="footer-links">
