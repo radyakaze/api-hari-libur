@@ -3,7 +3,7 @@ import { DOMParser } from '@b-fuze/deno-dom'
 import { MONTH_NAME } from '@/constants/month.ts'
 
 const fetcher = async (year: string) => {
-  const response = await fetch(`https://www.tanggalan.com/${year}`)
+  const response = await fetch(`https://tanggalans.com/kalender-${year}`)
 
   if (!response.ok) {
     throw new Error('Failed to fetch tanggalan')
@@ -17,7 +17,7 @@ export const crawler = async (year: string) => {
 
   const dom = new DOMParser().parseFromString(html, 'text/html')
 
-  const months = dom?.querySelectorAll('#main article ul')
+  const months = dom?.querySelectorAll('.entry-content .kalender-indo')
 
   if (!months) {
     throw new Error('Failed to parse DOM')
@@ -25,18 +25,22 @@ export const crawler = async (year: string) => {
 
   return Array.from(months).flatMap((item) => {
     const [monthName, year] = item
-      .querySelector<HTMLAnchorElement>('li:first-child a')
-      ?.getAttribute('href')
-      ?.split('-') || []
+      .querySelector<HTMLAnchorElement>('.kal-title .kal-title-link')
+      ?.textContent
+      ?.split(' ') || []
 
-    const month = MONTH_NAME[monthName as keyof typeof MONTH_NAME]
+
+    const month = MONTH_NAME[monthName.toLocaleLowerCase() as keyof typeof MONTH_NAME]
 
     return Array.from(
-      item.querySelectorAll('li:last-child table tr'),
+      item.querySelectorAll('.kal-libur-list li'),
     )
       .flatMap((holiday) => {
-        const day = holiday.querySelector<HTMLTableCellElement>('td:first-child')?.textContent.trim()
-        const name = holiday.querySelector<HTMLTableCellElement>('td:last-child')?.textContent.trim() as string
+        const dayEl = holiday.querySelector<HTMLDivElement>('.kal-libur-day')
+        const day = dayEl?.textContent.trim()
+        const name = dayEl?.nextSibling?.textContent?.trim()
+
+        if (!day || !name) return
 
         if (day && day.includes('-')) {
           const split = day.split('-', 2)
@@ -49,6 +53,7 @@ export const crawler = async (year: string) => {
               return {
                 date: `${year}-${month}-${(Number(value) + index).toString().padStart(2, '0')}`,
                 name,
+                is_national_holiday: !name?.toLowerCase().includes('cuti bersama')
               }
             })
         }
@@ -56,7 +61,9 @@ export const crawler = async (year: string) => {
         return {
           date: `${year}-${month}-${day?.padStart(2, '0')}`,
           name,
+          is_national_holiday: !name?.toLowerCase().includes('cuti bersama'),
         }
       })
+      .filter(holiday => !!holiday)
   })
 }

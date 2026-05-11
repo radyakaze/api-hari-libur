@@ -1,6 +1,6 @@
 import { crawler } from '@/libraries/scraper.ts'
 
-type Holiday = { name: string; date: string }
+type Holiday = { name: string; date: string; is_national_holiday: boolean }
 
 export const getHoliday = async (
   kv: Deno.Kv,
@@ -31,13 +31,13 @@ export const getHolidayDate = async (
   const formattedDate = `${year}-${month}-${day}`
 
   const holidays = await getHolidayYearly(kv, year)
-  const holidayList = holidays
-    .filter(item => item.date === formattedDate)
-    .map(item => item.name)
+  const dayHolidays = holidays.filter(item => item.date === formattedDate)
+  const holidayList = dayHolidays.map(item => item.name)
 
   return {
     date: formattedDate,
     is_holiday: holidayList.length > 0,
+    is_national_holiday: dayHolidays.some((holiday) => holiday.is_national_holiday),
     holiday_list: holidayList,
   }
 }
